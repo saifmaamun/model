@@ -1,0 +1,11 @@
+Model Information:
+* title:	Custom M4 Carbine Rifle
+* source:	https://sketchfab.com/3d-models/custom-m4-carbine-rifle-195d2de670b24e22a98cf9d47607e646
+* author:	trolosqlfod (https://sketchfab.com/trolosqlfod)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Custom M4 Carbine Rifle" (https://sketchfab.com/3d-models/custom-m4-carbine-rifle-195d2de670b24e22a98cf9d47607e646) by trolosqlfod (https://sketchfab.com/trolosqlfod) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

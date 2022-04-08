@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model</title>
+</head>
+<body>
+    <!-- Import the component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    
+    <!-- Use it like any other HTML element -->
+    
+
+
+
+    
+    <!-- <div>
+         <model-viewer id="first" style="margin:auto; width:auto; height:1200px"
+             alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+             src="https://raw.githubusercontent.com/dwqdaiwenqi/react-3d-viewer/master/site/src/lib/model/DamagedHelmet.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" shadow-softness="1" camera-controls auto-rotate>
+         </model-viewer>
+    </div> -->
+     <!-- <div>
+         <model-viewer id="first"  style="margin:auto; width:auto; height:1200px"
+             alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+             src="./spartan_armour_mkv_-_halo_reach/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
+         </model-viewer>
+    </div> -->
+    <!-- <div>
+         <model-viewer style="margin:auto; width:auto; height:1200px"
+             alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+             src="./lord_inquisitor_servo_skull/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" shadow-softness="1" camera-controls auto-rotate>
+         </model-viewer>
+    </div>
+   <div>
+        <model-viewer style="margin:auto; width:auto; height:1200px"
+            alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+            src="./scifi_girl_v.01/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster  shadow-intensity="1" shadow-softness="1" camera-controls auto-rotate>
+        </model-viewer>
+    </div>  -->
+    <!-- <div>
+        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
+            src="./spartan_armour_mkv_-_halo_reach/scene.gltf"
+            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
+            <div class="controls" ,="" id="color-controls">
+                <button data-color="1,0,0,1">Red</button>
+                <button data-color="0,1,0,1">Green</button>
+                <button data-color="0,0,1,1">Blue</button>
+            </div>
+        </model-viewer>
+    </div> -->
+    <!-- <div>
+        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
+            src="./spartan_armour_mkv_-_halo_reach/scene.gltf"
+            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
+            <div class="controls" ,="" id="color-controls">
+                <button data-color="1,0,0,1">Red</button>
+                <button data-color="0,1,0,1">Green</button>
+                <button data-color="0,0,1,1">Blue</button>
+            </div>
+        </model-viewer>
+    </div> -->
+    <!-- <div>
+        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
+            src="./spartan_armour_mkv_-_halo_reach/scene.gltf"
+            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
+            <div class="controls" ,="" id="color-controls">
+                <button data-color="1,0,0,1">Red</button>
+                <button data-color="0,1,0,1">Green</button>
+                <button data-color="0,0,1,1">Blue</button>
+            </div>
+        </model-viewer>
+    </div> -->
+    <div>
+        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
+            src="./custom_m4_carbine_rifle/scene.gltf"
+            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
+            <div class="controls" ,="" id="color-controls">
+                <button data-color="1,0,0,1">Red</button>
+                <button data-color="0,1,0,1">Green</button>
+                <button data-color="0,0,1,1">Blue</button>
+            </div>
+        </model-viewer>
+    </div>
+<script>
+    // get the model
+    const modelViewerColor = document.querySelector("model-viewer#color");
+
+    // get the buttons
+    document.querySelector('#color-controls').addEventListener('click', (event) => {
+// get the data in the buttons
+        const colorString = event.target.dataset.color;
+
+        if (!colorString) {
+            return;
+        }
+
+        // convert the button data into number array
+        const color = colorString.split(',')
+            .map(numberString => parseFloat(numberString));
+
+        console.log('Changing color to: ', color);
+
+        // get the model base color
+        const [material] = modelViewerColor.model.materials;
+        
+
+        // console.log(modelViewerColor.model.materials)
+        // console.log([material])
+        // set the  model base color to the button color
+        // console.log(modelViewerColor.model.materials.slice(0, -5)) 
+        // console.log(modelViewerColor.model.materials)
+        
+
+        // to set the color in all of the items
+        // modelViewerColor.model.materials.map(
+            
+        //     material=>material.pbrMetallicRoughness.setBaseColorFactor(color)
+        //     );
+
+        
+        // to set color only the first item
+        material.pbrMetallicRoughness.setBaseColorFactor(color);
+    });
+</script>
+   <!-- <script src="./index.js"></script> -->
+</body>
+</html>
