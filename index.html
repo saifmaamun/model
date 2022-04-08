@@ -11,85 +11,98 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     
     <!-- Use it like any other HTML element -->
-    
-
-
-
-    
-    <!-- <div>
-         <model-viewer id="first" style="margin:auto; width:auto; height:1200px"
-             alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-             src="https://raw.githubusercontent.com/dwqdaiwenqi/react-3d-viewer/master/site/src/lib/model/DamagedHelmet.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" shadow-softness="1" camera-controls auto-rotate>
-         </model-viewer>
-    </div> -->
-     <!-- <div>
-         <model-viewer id="first"  style="margin:auto; width:auto; height:1200px"
-             alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-             src="./spartan_armour_mkv_-_halo_reach/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
-         </model-viewer>
-    </div> -->
-    <!-- <div>
-         <model-viewer style="margin:auto; width:auto; height:1200px"
-             alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-             src="./lord_inquisitor_servo_skull/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" shadow-softness="1" camera-controls auto-rotate>
-         </model-viewer>
-    </div>
-   <div>
-        <model-viewer style="margin:auto; width:auto; height:1200px"
-            alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
-            src="./scifi_girl_v.01/scene.gltf" ar ar-modes="webxr scene-viewer quick-look" seamless-poster  shadow-intensity="1" shadow-softness="1" camera-controls auto-rotate>
-        </model-viewer>
-    </div>  -->
-    <!-- <div>
-        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
-            src="./spartan_armour_mkv_-_halo_reach/scene.gltf"
-            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
-            <div class="controls" ,="" id="color-controls">
-                <button data-color="1,0,0,1">Red</button>
-                <button data-color="0,1,0,1">Green</button>
-                <button data-color="0,0,1,1">Blue</button>
-            </div>
-        </model-viewer>
-    </div> -->
-    <!-- <div>
-        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
-            src="./spartan_armour_mkv_-_halo_reach/scene.gltf"
-            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
-            <div class="controls" ,="" id="color-controls">
-                <button data-color="1,0,0,1">Red</button>
-                <button data-color="0,1,0,1">Green</button>
-                <button data-color="0,0,1,1">Blue</button>
-            </div>
-        </model-viewer>
-    </div> -->
-    <!-- <div>
-        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
-            src="./spartan_armour_mkv_-_halo_reach/scene.gltf"
-            ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
-            <div class="controls" ,="" id="color-controls">
-                <button data-color="1,0,0,1">Red</button>
-                <button data-color="0,1,0,1">Green</button>
-                <button data-color="0,0,1,1">Blue</button>
-            </div>
-        </model-viewer>
-    </div> -->
     <div>
-        <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
-            src="./custom_m4_carbine_rifle/scene.gltf"
+        <div>
+            <select name="Chose Model" id="model-choser">
+                <option value="" select>select</option>
+                <option value="space">Space</option>
+                <option value="gun">Gun</option>
+                <option value="skull">Skull</option>
+                <option value="trex">T-Rex</option>
+                <option value="bike">Bike</option>
+                <option value="girl">Girl</option>
+                <option value="">None</option>
+            </select>
+            <button onclick="myFunction()">Select</button>
+        </div>
+
+        <div>
+            <p id="error"></p>
+            <model-viewer id="color" style="margin:auto; width:auto; height:800px" camera-controls interaction-prompt="none"
+            src="./scifi_girl_v.01/scene.gltf"
             ar ar-modes="webxr scene-viewer quick-look" alt="A 3D model of an astronaut" seamless-poster shadow-intensity="1" shadow-softness=".1" camera-controls auto-rotate>
-            <div class="controls" ,="" id="color-controls">
+            <div class="controls" ,="" id="semi-color-controls">
+                <p>Partial color change</p>
                 <button data-color="1,0,0,1">Red</button>
                 <button data-color="0,1,0,1">Green</button>
                 <button data-color="0,0,1,1">Blue</button>
             </div>
+            <div class="controls" ,="" id="full-color-controls">
+                <p>Full Color Change</p>
+                <button data-color="1,0,0,1">Red</button>
+                <button data-color="0,1,0,1">Green</button>
+                <button data-color="0,0,1,1">Blue</button>
+            </div>
+            <div>
+                <!-- <button id="reset"> Reset</button> -->
+            </div>
         </model-viewer>
     </div>
+</div>
 <script>
+    const halo= "./spartan_armour_mkv_-_halo_reach/scene.gltf"
+    const skull= "./lord_inquisitor_servo_skull/scene.gltf"
+    const gun= "./custom_m4_carbine_rifle/scene.gltf"
+    const trex= "./animated_t-rex_dinosaur_biting_attack_loop/scene.gltf"
+    const bike= "./motorcycle/scene.gltf"
+    const girl= "./scifi_girl_v.01/scene.gltf"
+    
+    function myFunction() {
+        let modelSelecter= document.getElementById("model-choser")
+        let modelName = modelSelecter.value;
+        let modelSrc=document.getElementById("color")
+    if(modelName==="space"){
+        modelSrc.src=halo
+    }
+    else if(modelName==="gun"){
+        modelSrc.src= gun
+    }
+    else if(modelName==="skull"){
+        modelSrc.src= skull
+    }
+    else if(modelName==="trex"){
+        modelSrc.src= trex
+    }
+    else if(modelName==="bike"){
+        modelSrc.src= bike
+    }
+    else if(modelName==="girl"){
+        modelSrc.src= girl
+    }
+    else{
+        document.getElementById("error").innerHTML="No Source Has Found"
+        // document.getElementById("color").style.display = 'none';
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // get the model
     const modelViewerColor = document.querySelector("model-viewer#color");
 
     // get the buttons
-    document.querySelector('#color-controls').addEventListener('click', (event) => {
+    document.querySelector('#semi-color-controls').addEventListener('click', (event) => {
 // get the data in the buttons
         const colorString = event.target.dataset.color;
 
@@ -106,24 +119,53 @@
         // get the model base color
         const [material] = modelViewerColor.model.materials;
         
-
-        // console.log(modelViewerColor.model.materials)
-        // console.log([material])
-        // set the  model base color to the button color
-        // console.log(modelViewerColor.model.materials.slice(0, -5)) 
-        // console.log(modelViewerColor.model.materials)
-        
-
-        // to set the color in all of the items
-        // modelViewerColor.model.materials.map(
-            
-        //     material=>material.pbrMetallicRoughness.setBaseColorFactor(color)
-        //     );
-
-        
         // to set color only the first item
+        console.log(material.pbrMetallicRoughness.baseColorFactor);
         material.pbrMetallicRoughness.setBaseColorFactor(color);
     });
+
+
+    
+
+// for full color 
+    // get the buttons
+    document.querySelector('#full-color-controls').addEventListener('click', (event) => {
+        // get the data in the buttons
+        const colorString = event.target.dataset.color;
+
+        if (!colorString) {
+            return;
+        }
+
+        // convert the button data into number array
+        const color = colorString.split(',')
+            .map(numberString => parseFloat(numberString));
+
+        console.log('Changing color to: ', color);
+
+        // get the model base color
+        const [material] = modelViewerColor.model.materials;
+
+
+        // to set the color in all of the items
+        modelViewerColor.model.materials.map(
+
+            material=>material.pbrMetallicRoughness.setBaseColorFactor(color)
+            );
+    });
+
+
+
+
+    // reset button
+        // document.getElementById('reset').addEventListener('click', (event) => {
+        //      // get the model base color
+        //      const [material] = modelViewerColor.model.materials;
+        //     const modelBaseColor = material.pbrMetallicRoughness.baseColorFactor
+        //     material.pbrMetallicRoughness.setBaseColorFactor(modelBaseColor);
+
+        // });
+
 </script>
    <!-- <script src="./index.js"></script> -->
 </body>
